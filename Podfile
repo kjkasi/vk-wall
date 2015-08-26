@@ -3,8 +3,8 @@
 
 target 'vk-wall' do
 
-  pod 'MagicalRecord', '~> 2.3'
-  pod 'AFNetworking', '~> 2.6'
+  pod 'MagicalRecord', '2.3'
+  pod 'AFNetworking', '2.5’
 
 end
 

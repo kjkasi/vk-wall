@@ -18,6 +18,13 @@
 		E17616871B8DD73F004DD149 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E17616861B8DD73F004DD149 /* Images.xcassets */; };
 		E176168A1B8DD73F004DD149 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17616881B8DD73F004DD149 /* LaunchScreen.xib */; };
 		E17616961B8DD73F004DD149 /* vk_wallTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E17616951B8DD73F004DD149 /* vk_wallTests.m */; };
+		E1857F831B8E269D0018AE7A /* WallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1857F821B8E269D0018AE7A /* WallViewController.m */; };
+		E1857F861B8E2A020018AE7A /* ApiManager+Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = E1857F851B8E2A020018AE7A /* ApiManager+Wall.m */; };
+		E1857F8A1B8E44ED0018AE7A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1857F881B8E44ED0018AE7A /* Model.xcdatamodeld */; };
+		E1857F921B8E48770018AE7A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1857F911B8E48770018AE7A /* CoreData.framework */; };
+		E1857F9C1B8E575A0018AE7A /* Wall+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = E1857F9B1B8E575A0018AE7A /* Wall+Extended.m */; };
+		E1857FAB1B8E60470018AE7A /* Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = E1857FAA1B8E60470018AE7A /* Wall.m */; };
+		E1857FAE1B8E60470018AE7A /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = E1857FAD1B8E60470018AE7A /* Profile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +60,18 @@
 		E176168F1B8DD73F004DD149 /* vk-wallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "vk-wallTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E17616941B8DD73F004DD149 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E17616951B8DD73F004DD149 /* vk_wallTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = vk_wallTests.m; sourceTree = "<group>"; };
+		E1857F811B8E269D0018AE7A /* WallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallViewController.h; sourceTree = "<group>"; };
+		E1857F821B8E269D0018AE7A /* WallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallViewController.m; sourceTree = "<group>"; };
+		E1857F841B8E2A020018AE7A /* ApiManager+Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ApiManager+Wall.h"; sourceTree = "<group>"; };
+		E1857F851B8E2A020018AE7A /* ApiManager+Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ApiManager+Wall.m"; sourceTree = "<group>"; };
+		E1857F891B8E44ED0018AE7A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		E1857F911B8E48770018AE7A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E1857F9A1B8E575A0018AE7A /* Wall+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Wall+Extended.h"; sourceTree = "<group>"; };
+		E1857F9B1B8E575A0018AE7A /* Wall+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Wall+Extended.m"; sourceTree = "<group>"; };
+		E1857FA91B8E60460018AE7A /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
+		E1857FAA1B8E60470018AE7A /* Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wall.m; sourceTree = "<group>"; };
+		E1857FAC1B8E60470018AE7A /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
+		E1857FAD1B8E60470018AE7A /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1857F921B8E48770018AE7A /* CoreData.framework in Frameworks */,
 				C43B59C669F76EB17DCE1E91 /* libPods-vk-wall.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +106,7 @@
 		BC217E1B615DF965D79849E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1857F911B8E48770018AE7A /* CoreData.framework */,
 				946D8A632FC1C5FCF24DEACA /* libPods-vk-wall.a */,
 			);
 			name = Frameworks;
@@ -94,8 +115,11 @@
 		E173D4CA1B8DE30800A6AC6E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E1857F871B8E44D10018AE7A /* CoreData */,
 				E173D4D51B8DE4BD00A6AC6E /* ApiManager.h */,
 				E173D4D61B8DE4BD00A6AC6E /* ApiManager.m */,
+				E1857F841B8E2A020018AE7A /* ApiManager+Wall.h */,
+				E1857F851B8E2A020018AE7A /* ApiManager+Wall.m */,
 				E173D4DF1B8DF73100A6AC6E /* AccessToken.h */,
 				E173D4E01B8DF73100A6AC6E /* AccessToken.m */,
 			);
@@ -116,6 +140,8 @@
 				E17616811B8DD73F004DD149 /* ViewController.m */,
 				E173D4D81B8DE7BE00A6AC6E /* AuchViewController.h */,
 				E173D4D91B8DE7BE00A6AC6E /* AuchViewController.m */,
+				E1857F811B8E269D0018AE7A /* WallViewController.h */,
+				E1857F821B8E269D0018AE7A /* WallViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -188,6 +214,28 @@
 				E17616941B8DD73F004DD149 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E1857F871B8E44D10018AE7A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E1857F931B8E4CC40018AE7A /* NSManagedObject */,
+				E1857F881B8E44ED0018AE7A /* Model.xcdatamodeld */,
+				E1857F9A1B8E575A0018AE7A /* Wall+Extended.h */,
+				E1857F9B1B8E575A0018AE7A /* Wall+Extended.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		E1857F931B8E4CC40018AE7A /* NSManagedObject */ = {
+			isa = PBXGroup;
+			children = (
+				E1857FA91B8E60460018AE7A /* Wall.h */,
+				E1857FAA1B8E60470018AE7A /* Wall.m */,
+				E1857FAC1B8E60470018AE7A /* Profile.h */,
+				E1857FAD1B8E60470018AE7A /* Profile.m */,
+			);
+			name = NSManagedObject;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,8 +374,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E173D4D71B8DE4BD00A6AC6E /* ApiManager.m in Sources */,
+				E1857F831B8E269D0018AE7A /* WallViewController.m in Sources */,
+				E1857F9C1B8E575A0018AE7A /* Wall+Extended.m in Sources */,
 				E17616821B8DD73F004DD149 /* ViewController.m in Sources */,
+				E1857FAB1B8E60470018AE7A /* Wall.m in Sources */,
 				E176167F1B8DD73F004DD149 /* AppDelegate.m in Sources */,
+				E1857F861B8E2A020018AE7A /* ApiManager+Wall.m in Sources */,
+				E1857FAE1B8E60470018AE7A /* Profile.m in Sources */,
+				E1857F8A1B8E44ED0018AE7A /* Model.xcdatamodeld in Sources */,
 				E173D4E11B8DF73100A6AC6E /* AccessToken.m in Sources */,
 				E176167C1B8DD73F004DD149 /* main.m in Sources */,
 				E173D4DA1B8DE7BE00A6AC6E /* AuchViewController.m in Sources */,
@@ -541,6 +595,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E1857F881B8E44ED0018AE7A /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E1857F891B8E44ED0018AE7A /* Model.xcdatamodel */,
+			);
+			currentVersion = E1857F891B8E44ED0018AE7A /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E176166E1B8DD73F004DD149 /* Project object */;
 }

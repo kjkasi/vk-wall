@@ -49,10 +49,6 @@ NSString *const kVersion = @"5.37";
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    if ([request.URL.host isEqualToString:@"oauth.vk.com"]) {
-        
-    }
-    
     NSLog(@"URL %@", request.URL);
     
     return YES;

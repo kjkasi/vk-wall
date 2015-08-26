@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#import <AFNetworking/AFNetworking.h>
+
+static const NSInteger kItemCount = 10;
+
 @interface ApiManager : NSObject
+
+@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
+
++ (instancetype)sharedManager;
 
 @end

@@ -8,14 +8,11 @@
 
 #import "ApiManager.h"
 
-#import <AFNetworking/AFNetworking.h>
 #import "AFNetworkActivityIndicatorManager.h"
 
-NSString *const kBaseUrl = @"https://api.vk.com/";
+NSString *const kBaseUrl = @"https://api.vk.com/method/";
 
 @interface ApiManager()
-
-@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
 
 @end
 
@@ -35,32 +32,31 @@ NSString *const kBaseUrl = @"https://api.vk.com/";
     self = [super init];
     if (self) {
         NSURL *baseUrl = [NSURL URLWithString:kBaseUrl];
-        self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseUrl];
+        AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseUrl];
+        
+        manager.responseSerializer = [AFJSONResponseSerializer serializer];
         
         [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
         
-        __weak typeof(self) weakSelf = self;
-        
-        [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-        [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSOperationQueue *operationQueue = manager.operationQueue;
+        [manager.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
             switch (status) {
-                    
+                case AFNetworkReachabilityStatusReachableViaWWAN:
                 case AFNetworkReachabilityStatusReachableViaWiFi:
-                case AFNetworkReachabilityStatusReachableViaWWAN: {
-                    [weakSelf.manager.operationQueue setSuspended:NO];
+                    [operationQueue setSuspended:NO];
                     break;
-                }
-                    
-                case AFNetworkReachabilityStatusUnknown:
-                case AFNetworkReachabilityStatusNotReachable: {
-                    [weakSelf.manager.operationQueue setSuspended:YES];
+                case AFNetworkReachabilityStatusNotReachable:
+                default:
+                    [operationQueue setSuspended:YES];
                     break;
-                }
             }
-            
             NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
-            
         }];
+        
+        [manager.reachabilityManager startMonitoring];
+        
+        self.manager = manager;
+        
     }
     return self;
 }
