@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C43B59C669F76EB17DCE1E91 /* libPods-vk-wall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 946D8A632FC1C5FCF24DEACA /* libPods-vk-wall.a */; };
 		E176167C1B8DD73F004DD149 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E176167B1B8DD73F004DD149 /* main.m */; };
 		E176167F1B8DD73F004DD149 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E176167E1B8DD73F004DD149 /* AppDelegate.m */; };
 		E17616821B8DD73F004DD149 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E17616811B8DD73F004DD149 /* ViewController.m */; };
@@ -27,6 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		624171BEAB9F7EDF3CAD74E2 /* Pods-vk-wall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vk-wall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vk-wall/Pods-vk-wall.debug.xcconfig"; sourceTree = "<group>"; };
+		85B04A1C4E4BE46B5ABE6657 /* Pods-vk-wall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vk-wall.release.xcconfig"; path = "Pods/Target Support Files/Pods-vk-wall/Pods-vk-wall.release.xcconfig"; sourceTree = "<group>"; };
+		946D8A632FC1C5FCF24DEACA /* libPods-vk-wall.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-vk-wall.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E17616761B8DD73F004DD149 /* vk-wall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vk-wall.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E176167A1B8DD73F004DD149 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E176167B1B8DD73F004DD149 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C43B59C669F76EB17DCE1E91 /* libPods-vk-wall.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +65,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC423DDEF0E465C8F1B32EFA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				624171BEAB9F7EDF3CAD74E2 /* Pods-vk-wall.debug.xcconfig */,
+				85B04A1C4E4BE46B5ABE6657 /* Pods-vk-wall.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BC217E1B615DF965D79849E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				946D8A632FC1C5FCF24DEACA /* libPods-vk-wall.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E176166D1B8DD73F004DD149 = {
 			isa = PBXGroup;
 			children = (
 				E17616781B8DD73F004DD149 /* vk-wall */,
 				E17616921B8DD73F004DD149 /* vk-wallTests */,
 				E17616771B8DD73F004DD149 /* Products */,
+				AC423DDEF0E465C8F1B32EFA /* Pods */,
+				BC217E1B615DF965D79849E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,9 +150,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E17616991B8DD73F004DD149 /* Build configuration list for PBXNativeTarget "vk-wall" */;
 			buildPhases = (
+				D3E6972238AC83F6F60868F9 /* Check Pods Manifest.lock */,
 				E17616721B8DD73F004DD149 /* Sources */,
 				E17616731B8DD73F004DD149 /* Frameworks */,
 				E17616741B8DD73F004DD149 /* Resources */,
+				01A6FD4FF2F3140B1438BF51 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,6 +239,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01A6FD4FF2F3140B1438BF51 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-vk-wall/Pods-vk-wall-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3E6972238AC83F6F60868F9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E17616721B8DD73F004DD149 /* Sources */ = {
@@ -347,6 +406,7 @@
 		};
 		E176169A1B8DD73F004DD149 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 624171BEAB9F7EDF3CAD74E2 /* Pods-vk-wall.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "vk-wall/Info.plist";
@@ -357,6 +417,7 @@
 		};
 		E176169B1B8DD73F004DD149 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85B04A1C4E4BE46B5ABE6657 /* Pods-vk-wall.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "vk-wall/Info.plist";
@@ -418,6 +479,7 @@
 				E176169B1B8DD73F004DD149 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E176169C1B8DD73F004DD149 /* Build configuration list for PBXNativeTarget "vk-wallTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +488,7 @@
 				E176169E1B8DD73F004DD149 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
