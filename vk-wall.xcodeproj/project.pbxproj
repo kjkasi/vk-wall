@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C43B59C669F76EB17DCE1E91 /* libPods-vk-wall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 946D8A632FC1C5FCF24DEACA /* libPods-vk-wall.a */; };
 		E173D4D71B8DE4BD00A6AC6E /* ApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E173D4D61B8DE4BD00A6AC6E /* ApiManager.m */; };
+		E173D4DA1B8DE7BE00A6AC6E /* AuchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E173D4D91B8DE7BE00A6AC6E /* AuchViewController.m */; };
+		E173D4E11B8DF73100A6AC6E /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = E173D4E01B8DF73100A6AC6E /* AccessToken.m */; };
 		E176167C1B8DD73F004DD149 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E176167B1B8DD73F004DD149 /* main.m */; };
 		E176167F1B8DD73F004DD149 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E176167E1B8DD73F004DD149 /* AppDelegate.m */; };
 		E17616821B8DD73F004DD149 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E17616811B8DD73F004DD149 /* ViewController.m */; };
@@ -34,6 +36,10 @@
 		946D8A632FC1C5FCF24DEACA /* libPods-vk-wall.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-vk-wall.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E173D4D51B8DE4BD00A6AC6E /* ApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiManager.h; sourceTree = "<group>"; };
 		E173D4D61B8DE4BD00A6AC6E /* ApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiManager.m; sourceTree = "<group>"; };
+		E173D4D81B8DE7BE00A6AC6E /* AuchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuchViewController.h; sourceTree = "<group>"; };
+		E173D4D91B8DE7BE00A6AC6E /* AuchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuchViewController.m; sourceTree = "<group>"; };
+		E173D4DF1B8DF73100A6AC6E /* AccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessToken.h; sourceTree = "<group>"; };
+		E173D4E01B8DF73100A6AC6E /* AccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessToken.m; sourceTree = "<group>"; };
 		E17616761B8DD73F004DD149 /* vk-wall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vk-wall.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E176167A1B8DD73F004DD149 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E176167B1B8DD73F004DD149 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -90,6 +96,8 @@
 			children = (
 				E173D4D51B8DE4BD00A6AC6E /* ApiManager.h */,
 				E173D4D61B8DE4BD00A6AC6E /* ApiManager.m */,
+				E173D4DF1B8DF73100A6AC6E /* AccessToken.h */,
+				E173D4E01B8DF73100A6AC6E /* AccessToken.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -106,6 +114,8 @@
 			children = (
 				E17616801B8DD73F004DD149 /* ViewController.h */,
 				E17616811B8DD73F004DD149 /* ViewController.m */,
+				E173D4D81B8DE7BE00A6AC6E /* AuchViewController.h */,
+				E173D4D91B8DE7BE00A6AC6E /* AuchViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -318,7 +328,9 @@
 				E173D4D71B8DE4BD00A6AC6E /* ApiManager.m in Sources */,
 				E17616821B8DD73F004DD149 /* ViewController.m in Sources */,
 				E176167F1B8DD73F004DD149 /* AppDelegate.m in Sources */,
+				E173D4E11B8DF73100A6AC6E /* AccessToken.m in Sources */,
 				E176167C1B8DD73F004DD149 /* main.m in Sources */,
+				E173D4DA1B8DE7BE00A6AC6E /* AuchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
