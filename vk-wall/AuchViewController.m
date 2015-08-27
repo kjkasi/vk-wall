@@ -32,7 +32,7 @@ NSString *const kVersion = @"5.37";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSString* urlString = [NSString stringWithFormat:@"%@?client_id=%@&display=%@&redirect_uri=%@&scope=%@&response_type=%@&v=%@", kAuchUrl, kClientId, kDisplay, kRedirectUri, kScope, kResponceType, kVersion];
+    NSString* urlString = [NSString stringWithFormat:@"%@?client_id=%@&display=%@&redirect_uri=%@&scope=%@&response_type=%@&v=%@&revoke=1", kAuchUrl, kClientId, kDisplay, kRedirectUri, kScope, kResponceType, kVersion];
     
     NSURL* url = [NSURL URLWithString:urlString];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
@@ -55,9 +55,9 @@ NSString *const kVersion = @"5.37";
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    //NSLog(@"URL %@", webView.request.URL);
-    [AccessToken initWithURL:webView.request.URL];
-    if ([AccessToken token]) {
+    NSLog(@"URL %@", webView.request.URL);
+    AccessToken *token = [[AccessToken alloc] initWithURL:webView.request.URL];
+    if ([token isLoggedIn]) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }

@@ -17,7 +17,15 @@
 
 - (void)getWallWithOffset:(NSInteger)offset response:(ApiGetWallResponse)response {
     
-    [self.manager GET:@"wall.get" parameters:@{@"count": @(kItemCount), @"access_token": [AccessToken token], @"extended": @1} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    if (![self.token isLoggedIn]) {
+        response(nil);
+        [self authorize];
+        return;
+    }
+    
+    NSDictionary *param = @{@"count": @(kItemCount), @"access_token": self.token.token, @"extended": @1};
+    
+    [self.manager GET:@"wall.get" parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSDictionary *res = responseObject[@"response"];
         

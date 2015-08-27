@@ -25,16 +25,26 @@
                             <outlet property="delegate" destination="hax-gz-aHy" id="H6t-qV-7jb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="C3X-Jm-4VE"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="C3X-Jm-4VE">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="SNh-NG-TNI">
+                            <connections>
+                                <action selector="actionLogout:" destination="hax-gz-aHy" id="Ccm-oY-Sh9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonLogout" destination="SNh-NG-TNI" id="p0c-cu-luQ"/>
+                        <segue destination="krZ-mu-DMg" kind="presentation" identifier="AuchSigueIdentifier" id="bbB-fW-u7B"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mfc-Yd-PHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-517" y="-119"/>
+            <point key="canvasLocation" x="-490" y="-119"/>
         </scene>
         <!--Auch View Controller-->
         <scene sceneID="1fV-av-RJg">
             <objects>
-                <viewController id="krZ-mu-DMg" customClass="AuchViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="krZ-mu-DMg" customClass="AuchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K8k-yD-uHr"/>
                         <viewControllerLayoutGuide type="bottom" id="wvP-EH-4bM"/>
@@ -65,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Lo-4x-pu9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="157" y="-119"/>
+            <point key="canvasLocation" x="217" y="-119"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DKk-Yl-TDl">

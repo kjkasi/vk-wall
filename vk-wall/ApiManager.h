@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import <AFNetworking/AFNetworking.h>
+#import "AccessToken.h"
 
 static const NSInteger kItemCount = 10;
 
@@ -16,6 +17,12 @@ static const NSInteger kItemCount = 10;
 
 @property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
 
+@property (nonatomic, strong) AccessToken *token;
+
+@property (nonatomic, assign, getter=isLoggedIn) BOOL loggedIn; 
+
 + (instancetype)sharedManager;
+
+- (void)authorize;
 
 @end

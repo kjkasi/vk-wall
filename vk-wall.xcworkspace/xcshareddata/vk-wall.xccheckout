@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>69B26456-F089-4940-BF46-93836F816861</string>
+	<key>IDESourceControlProjectName</key>
+	<string>vk-wall</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0A68E9646376E85FC3B26426CA83F9B5058C3CE8</key>
+		<string>https://github.com/spfy/vk-wall.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>vk-wall.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0A68E9646376E85FC3B26426CA83F9B5058C3CE8</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/spfy/vk-wall.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0A68E9646376E85FC3B26426CA83F9B5058C3CE8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0A68E9646376E85FC3B26426CA83F9B5058C3CE8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>vk-wall</string>
+		</dict>
+	</array>
+</dict>
+</plist>

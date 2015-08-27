@@ -11,12 +11,15 @@
 #import "ApiManager+Wall.h"
 #import <MagicalRecord/MagicalRecord.h>
 #import "Wall.h"
+#import "AccessToken.h"
 
 @interface WallViewController() <NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *posts;
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *buttonLogout;
 
 @end
 
@@ -26,6 +29,10 @@
     [super viewDidLoad];
     
     self.posts = [@[] mutableCopy];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     [self loadData];
 }
@@ -42,7 +49,7 @@
     [[ApiManager sharedManager] getWallWithOffset:self.fetchedResultsController.fetchedObjects.count response:^(NSError *error) {
         
         if (error) {
-            //
+            [[[UIAlertView alloc] initWithTitle:error.domain message:error.description delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil] show];
         }
     }];
 }
@@ -80,7 +87,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self loadData];
+    //[self loadData];
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
@@ -138,6 +145,8 @@
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
+        default:
+            break;
     }
 }
 
@@ -172,6 +181,21 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView endUpdates];
+}
+
+#pragma mark - Action
+
+- (IBAction)actionLogout:(UIBarButtonItem *)sender {
+    
+    //[AccessToken setToken:nil];
+    //[AccessToken setUserId:nil];
+    //[AccessToken setExpirationInterval:0];
+    AccessToken *token = [[AccessToken alloc] init];
+    token.token = nil;
+    token.expirationDate = nil;
+    token.userId = nil;
+    
+    [self performSegueWithIdentifier:@"AuchSigueIdentifier" sender:nil];
 }
 
 @end

@@ -10,7 +10,15 @@
 
 @interface AccessToken : NSObject
 
-+ (NSString *)token;
+@property (nonatomic, strong) NSString *token;
+
+@property (nonatomic, strong) NSDate *expirationDate;
+
+@property (nonatomic, strong) NSString *userId;
+
+@property (nonatomic, assign, getter=isLoggedIn) BOOL loggedIn;
+
+/*+ (NSString *)token;
 
 + (void)setToken:(NSString *)token;
 
@@ -20,8 +28,8 @@
 
 + (NSString *)userId;
 
-+ (void)setUserId:(NSString *)userId;
++ (void)setUserId:(NSString *)userId;*/
 
-+ (void)initWithURL:(NSURL *)url;
+- (instancetype)initWithURL:(NSURL *)url;
 
 @end
