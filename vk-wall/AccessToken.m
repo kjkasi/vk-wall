@@ -149,9 +149,12 @@ NSString *const kUserIdKey = @"user_id";
         }
     }
     return self;
-    
-    
-    
+}
+
+- (void)clean {
+    self.token = nil;
+    self.expirationDate = nil;
+    self.userId = nil;
 }
 
 @end

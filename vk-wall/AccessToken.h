@@ -32,4 +32,6 @@
 
 - (instancetype)initWithURL:(NSURL *)url;
 
+- (void)clean;
+
 @end

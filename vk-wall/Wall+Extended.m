@@ -10,4 +10,14 @@
 
 @implementation Wall (Extended)
 
+- (NSString *)dateString {
+    
+    NSDate *date = self.date;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSString *stingDate = [dateFormatter stringFromDate:date];
+    
+    return stingDate;
+}
+
 @end

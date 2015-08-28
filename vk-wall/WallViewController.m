@@ -10,8 +10,11 @@
 
 #import "ApiManager+Wall.h"
 #import <MagicalRecord/MagicalRecord.h>
-#import "Wall.h"
+#import "Wall+Extended.h"
+#import "Profile.h"
 #import "AccessToken.h"
+#import "WallCell.h"
+#import <AFNetworking/UIKit+AFNetworking.h>
 
 @interface WallViewController() <NSFetchedResultsControllerDelegate>
 
@@ -19,7 +22,7 @@
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
-@property (nonatomic, strong) IBOutlet UIBarButtonItem *buttonLogout;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *buttonLogout;
 
 @end
 
@@ -29,12 +32,16 @@
     [super viewDidLoad];
     
     self.posts = [@[] mutableCopy];
+    
+    UIRefreshControl* refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refreshWall) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self loadData];
+    [self loadDataWithOffset:self.fetchedResultsController.fetchedObjects.count];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,14 +51,28 @@
 
 #pragma mark - 
 
-- (void)loadData {
+- (void)loadDataWithOffset:(NSInteger)offset {
     
-    [[ApiManager sharedManager] getWallWithOffset:self.fetchedResultsController.fetchedObjects.count response:^(NSError *error) {
+    self.tableView.tableFooterView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    [[ApiManager sharedManager] getWallWithOffset:offset response:^(NSError *error) {
+        
+        if ([self.refreshControl isRefreshing]) {
+            [self.refreshControl endRefreshing];
+        }
+        
+        self.tableView.tableFooterView = nil;
         
         if (error) {
             [[[UIAlertView alloc] initWithTitle:error.domain message:error.description delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil] show];
         }
     }];
+}
+
+- (void)refreshWall {
+    //[Wall MR_truncateAll];
+    //[Profile MR_truncateAll];
+    [self loadDataWithOffset:0];
 }
 
 #pragma mark - UITableViewDataSource
@@ -70,16 +91,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *cellIdentifier = @"cellIdentifier";
-    
-    Wall *wall = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    static NSString *cellIdentifier = @"WallCellIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", wall.text];
+    //cell.textLabel.text = [NSString stringWithFormat:@"%@", wall.text];
     
     return cell;
 }
@@ -87,7 +102,21 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    //[self loadData];
+    
+    Wall *wall = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    WallCell *wallCell = (WallCell *)cell;
+    
+    Profile *profile = wall.owner;
+    
+    wallCell.labelName.text = [NSString stringWithFormat:@"%@ %@", profile.firstName, profile.lastName];
+    wallCell.labelDate.text = wall.date.description;
+    wallCell.labelText.text = wall.text;
+    [wallCell.imageProfile setImageWithURL:[NSURL URLWithString:profile.photo50]];
+    
+    if ([wall isEqual:[self.fetchedResultsController.fetchedObjects lastObject]]) {
+        [self loadDataWithOffset:self.fetchedResultsController.fetchedObjects.count];
+    }
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
@@ -158,11 +187,11 @@
     
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
             
         case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
             
         case NSFetchedResultsChangeUpdate:
@@ -170,8 +199,8 @@
             break;
             
         case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
     }
 }

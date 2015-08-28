@@ -10,4 +10,6 @@
 
 @interface Wall (Extended)
 
+- (NSString *)dateString;
+
 @end

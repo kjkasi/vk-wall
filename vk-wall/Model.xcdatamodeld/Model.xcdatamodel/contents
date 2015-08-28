@@ -3,16 +3,20 @@
     <entity name="Profile" representedClassName="Profile" syncable="YES">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photo50" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="wall" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wall" inverseName="owner" inverseEntity="Wall" syncable="YES"/>
     </entity>
     <entity name="Wall" representedClassName="Wall" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="fromId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hidden" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="wall" inverseEntity="Profile" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Wall" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="Profile" positionX="-36" positionY="27" width="128" height="90"/>
+        <element name="Profile" positionX="-36" positionY="27" width="128" height="120"/>
+        <element name="Wall" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>
