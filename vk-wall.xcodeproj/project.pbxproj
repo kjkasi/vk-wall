@@ -17,14 +17,18 @@
 		E17616871B8DD73F004DD149 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E17616861B8DD73F004DD149 /* Images.xcassets */; };
 		E176168A1B8DD73F004DD149 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17616881B8DD73F004DD149 /* LaunchScreen.xib */; };
 		E17616961B8DD73F004DD149 /* vk_wallTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E17616951B8DD73F004DD149 /* vk_wallTests.m */; };
+		E17A082B1B93400C00D7F40C /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = E17A082A1B93400C00D7F40C /* Profile.m */; };
+		E17A082E1B93400C00D7F40C /* Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = E17A082D1B93400C00D7F40C /* Wall.m */; };
+		E17A08311B93400C00D7F40C /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = E17A08301B93400C00D7F40C /* Photo.m */; };
+		E17A08341B934AC100D7F40C /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E17A08331B934AC100D7F40C /* PhotoView.m */; };
 		E184638C1B8F4B7E0080DF06 /* WallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E184638B1B8F4B7E0080DF06 /* WallCell.m */; };
 		E1857F831B8E269D0018AE7A /* WallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1857F821B8E269D0018AE7A /* WallViewController.m */; };
 		E1857F861B8E2A020018AE7A /* ApiManager+Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = E1857F851B8E2A020018AE7A /* ApiManager+Wall.m */; };
 		E1857F8A1B8E44ED0018AE7A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1857F881B8E44ED0018AE7A /* Model.xcdatamodeld */; };
 		E1857F921B8E48770018AE7A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1857F911B8E48770018AE7A /* CoreData.framework */; };
 		E1857F9C1B8E575A0018AE7A /* Wall+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = E1857F9B1B8E575A0018AE7A /* Wall+Extended.m */; };
-		E18792AE1B9121A0001D0D19 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = E18792AD1B9121A0001D0D19 /* Profile.m */; };
-		E18792B11B9121A1001D0D19 /* Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = E18792B01B9121A1001D0D19 /* Wall.m */; };
+		E18792C61B9267FC001D0D19 /* Profile+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = E18792C51B9267FC001D0D19 /* Profile+Extended.m */; };
+		E18792CC1B92681D001D0D19 /* Photo+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = E18792CB1B92681D001D0D19 /* Photo+Extended.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,14 @@
 		E176168F1B8DD73F004DD149 /* vk-wallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "vk-wallTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E17616941B8DD73F004DD149 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E17616951B8DD73F004DD149 /* vk_wallTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = vk_wallTests.m; sourceTree = "<group>"; };
+		E17A08291B93400C00D7F40C /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
+		E17A082A1B93400C00D7F40C /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
+		E17A082C1B93400C00D7F40C /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
+		E17A082D1B93400C00D7F40C /* Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wall.m; sourceTree = "<group>"; };
+		E17A082F1B93400C00D7F40C /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		E17A08301B93400C00D7F40C /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		E17A08321B934AC100D7F40C /* PhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoView.h; sourceTree = "<group>"; };
+		E17A08331B934AC100D7F40C /* PhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoView.m; sourceTree = "<group>"; };
 		E184638A1B8F4B7E0080DF06 /* WallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallCell.h; sourceTree = "<group>"; };
 		E184638B1B8F4B7E0080DF06 /* WallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallCell.m; sourceTree = "<group>"; };
 		E1857F811B8E269D0018AE7A /* WallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallViewController.h; sourceTree = "<group>"; };
@@ -68,10 +80,10 @@
 		E1857F911B8E48770018AE7A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E1857F9A1B8E575A0018AE7A /* Wall+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Wall+Extended.h"; sourceTree = "<group>"; };
 		E1857F9B1B8E575A0018AE7A /* Wall+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Wall+Extended.m"; sourceTree = "<group>"; };
-		E18792AC1B9121A0001D0D19 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
-		E18792AD1B9121A0001D0D19 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
-		E18792AF1B9121A1001D0D19 /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
-		E18792B01B9121A1001D0D19 /* Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wall.m; sourceTree = "<group>"; };
+		E18792C41B9267FC001D0D19 /* Profile+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Profile+Extended.h"; sourceTree = "<group>"; };
+		E18792C51B9267FC001D0D19 /* Profile+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Profile+Extended.m"; sourceTree = "<group>"; };
+		E18792CA1B92681D001D0D19 /* Photo+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Photo+Extended.h"; sourceTree = "<group>"; };
+		E18792CB1B92681D001D0D19 /* Photo+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Photo+Extended.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				E18463891B8F4B530080DF06 /* UITableViewCell */,
+				E17A08321B934AC100D7F40C /* PhotoView.h */,
+				E17A08331B934AC100D7F40C /* PhotoView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -229,6 +243,10 @@
 			children = (
 				E1857F931B8E4CC40018AE7A /* NSManagedObject */,
 				E1857F881B8E44ED0018AE7A /* Model.xcdatamodeld */,
+				E18792C41B9267FC001D0D19 /* Profile+Extended.h */,
+				E18792C51B9267FC001D0D19 /* Profile+Extended.m */,
+				E18792CA1B92681D001D0D19 /* Photo+Extended.h */,
+				E18792CB1B92681D001D0D19 /* Photo+Extended.m */,
 				E1857F9A1B8E575A0018AE7A /* Wall+Extended.h */,
 				E1857F9B1B8E575A0018AE7A /* Wall+Extended.m */,
 			);
@@ -238,10 +256,12 @@
 		E1857F931B8E4CC40018AE7A /* NSManagedObject */ = {
 			isa = PBXGroup;
 			children = (
-				E18792AC1B9121A0001D0D19 /* Profile.h */,
-				E18792AD1B9121A0001D0D19 /* Profile.m */,
-				E18792AF1B9121A1001D0D19 /* Wall.h */,
-				E18792B01B9121A1001D0D19 /* Wall.m */,
+				E17A082F1B93400C00D7F40C /* Photo.h */,
+				E17A08301B93400C00D7F40C /* Photo.m */,
+				E17A082C1B93400C00D7F40C /* Wall.h */,
+				E17A082D1B93400C00D7F40C /* Wall.m */,
+				E17A08291B93400C00D7F40C /* Profile.h */,
+				E17A082A1B93400C00D7F40C /* Profile.m */,
 			);
 			name = NSManagedObject;
 			sourceTree = "<group>";
@@ -382,15 +402,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				E173D4D71B8DE4BD00A6AC6E /* ApiManager.m in Sources */,
+				E18792CC1B92681D001D0D19 /* Photo+Extended.m in Sources */,
 				E1857F831B8E269D0018AE7A /* WallViewController.m in Sources */,
+				E17A08311B93400C00D7F40C /* Photo.m in Sources */,
 				E1857F9C1B8E575A0018AE7A /* Wall+Extended.m in Sources */,
 				E176167F1B8DD73F004DD149 /* AppDelegate.m in Sources */,
+				E17A082E1B93400C00D7F40C /* Wall.m in Sources */,
 				E1857F861B8E2A020018AE7A /* ApiManager+Wall.m in Sources */,
-				E18792B11B9121A1001D0D19 /* Wall.m in Sources */,
 				E1857F8A1B8E44ED0018AE7A /* Model.xcdatamodeld in Sources */,
 				E173D4E11B8DF73100A6AC6E /* AccessToken.m in Sources */,
+				E17A082B1B93400C00D7F40C /* Profile.m in Sources */,
+				E17A08341B934AC100D7F40C /* PhotoView.m in Sources */,
+				E18792C61B9267FC001D0D19 /* Profile+Extended.m in Sources */,
 				E184638C1B8F4B7E0080DF06 /* WallCell.m in Sources */,
-				E18792AE1B9121A0001D0D19 /* Profile.m in Sources */,
 				E176167C1B8DD73F004DD149 /* main.m in Sources */,
 				E173D4DA1B8DE7BE00A6AC6E /* AuchViewController.m in Sources */,
 			);

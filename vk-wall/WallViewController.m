@@ -15,6 +15,9 @@
 #import "AccessToken.h"
 #import "WallCell.h"
 #import <AFNetworking/UIKit+AFNetworking.h>
+#import "Photo+Extended.h"
+
+static NSString *cellIdentifier = @"WallCellIdentifier";
 
 @interface WallViewController() <NSFetchedResultsControllerDelegate>
 
@@ -41,7 +44,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self loadDataWithOffset:self.fetchedResultsController.fetchedObjects.count];
+    [self loadDataWithOffset:0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,34 +88,67 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    NSLog(@"%@", @([sectionInfo numberOfObjects]));
+    //NSLog(@"row count%@", @([sectionInfo numberOfObjects]));
     return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *cellIdentifier = @"WallCellIdentifier";
+    WallCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    //cell.textLabel.text = [NSString stringWithFormat:@"%@", wall.text];
+    Wall *wall = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    Profile *profile = wall.owner;
+    
+    cell.labelName.text = [NSString stringWithFormat:@"%@ %@", profile.firstName, profile.lastName];
+    cell.labelDate.text = wall.date.description;
+    cell.labelText.text = wall.text;
+    
+    [UIView transitionWithView:cell.imageProfile duration:0.1f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        [cell.imageProfile setImageWithURL:[NSURL URLWithString:profile.photo50]];
+    } completion:nil];
+    
+    [wall.photos enumerateObjectsUsingBlock:^(Photo *photo, NSUInteger idx, BOOL *stop) {
+        
+        if (idx > 1) {
+            return;
+        }
+        
+        //UIImageView *imageView = cell.imageViews[idx];
+        //[imageView setImageWithURL:photo.url];
+    }];
+
     
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     Wall *wall = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    WallCell *wallCell = (WallCell *)cell;
+    WallCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    Profile *profile = wall.owner;
+    if (wall.photos.count) {
+        NSNumber *height1 = [[wall.photos objectAtIndex:0] height];
+        //NSNumber *height2 = [[wall.photos objectAtIndex:1] height];
+        
+        CGFloat height0 = CGRectGetMaxY(cell.labelText.frame);
+        
+        return height0 + height1.integerValue;
+        
+    } else {
+        //CGFloat height = CGRectGetMaxY(cell.labelText.frame);
+        //return height;
+    }
     
-    wallCell.labelName.text = [NSString stringWithFormat:@"%@ %@", profile.firstName, profile.lastName];
-    wallCell.labelDate.text = wall.date.description;
-    wallCell.labelText.text = wall.text;
-    [wallCell.imageProfile setImageWithURL:[NSURL URLWithString:profile.photo50]];
+    return 44.f;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    Wall *wall = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     if ([wall isEqual:[self.fetchedResultsController.fetchedObjects lastObject]]) {
         [self loadDataWithOffset:self.fetchedResultsController.fetchedObjects.count];
@@ -168,11 +204,11 @@
 {
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationNone];
             break;
             
         case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationNone];
             break;
         default:
             break;
@@ -187,11 +223,11 @@
     
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationNone];
             break;
             
         case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             break;
             
         case NSFetchedResultsChangeUpdate:
@@ -199,8 +235,8 @@
             break;
             
         case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationNone];
             break;
     }
 }
@@ -215,14 +251,9 @@
 #pragma mark - Action
 
 - (IBAction)actionLogout:(UIBarButtonItem *)sender {
-    
-    //[AccessToken setToken:nil];
-    //[AccessToken setUserId:nil];
-    //[AccessToken setExpirationInterval:0];
+
     AccessToken *token = [[AccessToken alloc] init];
-    token.token = nil;
-    token.expirationDate = nil;
-    token.userId = nil;
+    [token clean];
     
     [self performSegueWithIdentifier:@"AuchSigueIdentifier" sender:nil];
 }

@@ -2,7 +2,7 @@
 //  Profile.h
 //  vk-wall
 //
-//  Created by Anton Minin on 29/08/15.
+//  Created by Anton Minin on 30/08/15.
 //  Copyright (c) 2015 Anton Minin. All rights reserved.
 //
 
@@ -15,8 +15,8 @@
 
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * lastName;
-@property (nonatomic, retain) NSString * uid;
 @property (nonatomic, retain) NSString * photo50;
+@property (nonatomic, retain) NSString * uid;
 @property (nonatomic, retain) NSSet *wall;
 @end
 

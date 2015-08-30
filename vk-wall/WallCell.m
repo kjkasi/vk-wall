@@ -8,6 +8,11 @@
 
 #import "WallCell.h"
 
+#import "Wall+Extended.h"
+#import "Profile+Extended.h"
+#import "Photo+Extended.h"
+#import <AFNetworking/UIKit+AFNetworking.h>
+
 @implementation WallCell
 
 - (void)awakeFromNib {

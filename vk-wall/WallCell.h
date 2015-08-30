@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class Wall;
+
 @interface WallCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UIImageView *imageProfile;
@@ -17,7 +19,5 @@
 @property (nonatomic, weak) IBOutlet UILabel *labelDate;
 
 @property (nonatomic, weak) IBOutlet UILabel *labelText;
-
-- (CGFloat)calculateHeight;
 
 @end

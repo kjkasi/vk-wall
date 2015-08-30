@@ -10,7 +10,8 @@
 
 #import "AccessToken.h"
 #import "Wall+Extended.h"
-#import "Profile.h"
+#import "Profile+Extended.h"
+#import "Photo+Extended.h"
 #import <MagicalRecord/MagicalRecord.h>
 
 @implementation ApiManager (Wall)
@@ -23,7 +24,7 @@
         return;
     }
     
-    NSDictionary *param = @{@"count": @(kItemCount), @"access_token": self.token.token, @"extended": @1, @"offset": @(offset)};
+    NSDictionary *param = @{@"count": @(kItemCount), @"access_token": self.token.token, @"extended": @1, @"offset": @(offset), @"v": @5.37};
     
     [self.manager GET:@"wall.get" parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -40,8 +41,8 @@
             }
         }
         
-        NSArray *groups = res[@"groups"];
-        NSArray *wall = res[@"wall"];
+        //NSArray *groups = res[@"groups"];
+        NSArray *wall = res[@"items"];
         NSArray *profiles = res[@"profiles"];
         
         [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
@@ -50,49 +51,31 @@
                 [Wall MR_truncateAllInContext:localContext];
             }
             
-            //Parse profiles
+            //MARK:Parse profiles
             for (id object in profiles) {
                 
-                NSNumber *uid = object[@"uid"];
-                
-                Profile *profile = [Profile MR_findFirstByAttribute:@"uid" withValue:uid.stringValue];
-                
-                if (profile == nil) {
-                    profile = [Profile MR_createEntityInContext:localContext];
-                }
-                
-                profile.uid = uid.stringValue;
-                profile.firstName = object[@"first_name"];
-                profile.lastName = object[@"last_name"];
-                profile.photo50 = object[@"photo_medium_rec"];
+                [Profile initWithResponse:object inContext:localContext];
                 
             }
             
-            //Parse wall
+            //MARK:Parse wall
             for (id object in wall) {
                 if ([object isKindOfClass:[NSDictionary class]]) {
-                    //
-                    NSNumber *uid = object[@"id"];
                     
-                    Wall *wall = [Wall MR_findFirstByAttribute:@"uid" withValue:uid.stringValue inContext:localContext];
+                    Wall *wall = [Wall initWithResponse:object inContext:localContext];
                     
-                    wall.hidden = NO;
+                    //MARK: Parse Photo
+                    NSArray *attachments = object[@"attachments"];
                     
-                    if (wall == nil) {
-                        wall = [Wall MR_createEntityInContext:localContext];
+                    for (id attachment in attachments) {
+                        
+                        NSDictionary *dictPhoto = attachment[@"photo"];
+                        
+                        Photo *photo = [Photo initWithResponse:dictPhoto inContext:localContext];
+                        [wall addPhotosObject:photo];
+                        
                     }
                     
-                    wall.uid = uid.stringValue;
-                    
-                    NSNumber *fromId = object[@"from_id"];
-                    //wall.fromId = fromId.stringValue;
-                    wall.owner = [Profile MR_findFirstByAttribute:@"uid" withValue:fromId.stringValue inContext:localContext];
-                    
-                    NSNumber *date = object[@"date"];
-                    wall.date = [NSDate dateWithTimeIntervalSince1970:date.doubleValue];
-                    
-                    wall.text = object[@"text"];
-                    NSLog(@"text: %@", wall.text);
                 }
             }
             
