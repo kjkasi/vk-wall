@@ -38,12 +38,12 @@
     UIRefreshControl* refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refreshWall) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
+    
+    [self loadDataWithOffset:0];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    [self loadDataWithOffset:0];
 }
 
 - (void)didReceiveMemoryWarning {

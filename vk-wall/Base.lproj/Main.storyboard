@@ -59,8 +59,6 @@
                                         <constraint firstItem="FSm-oO-XYa" firstAttribute="top" secondItem="UI7-Xm-pdZ" secondAttribute="bottom" constant="8" id="2Dr-jM-HHU"/>
                                         <constraint firstAttribute="trailing" secondItem="FSm-oO-XYa" secondAttribute="trailing" constant="8" id="39k-VA-0lY"/>
                                         <constraint firstItem="UI7-Xm-pdZ" firstAttribute="top" secondItem="tUM-Ue-rpp" secondAttribute="bottom" constant="8" id="9mJ-U5-tIr"/>
-                                        <constraint firstAttribute="bottom" secondItem="FSm-oO-XYa" secondAttribute="bottom" constant="8" id="Jtl-PJ-2L7"/>
-                                        <constraint firstAttribute="bottom" secondItem="FSm-oO-XYa" secondAttribute="bottom" constant="8" id="Qkh-M0-Vcf"/>
                                         <constraint firstAttribute="trailing" secondItem="UI7-Xm-pdZ" secondAttribute="trailing" constant="8" id="T2k-9f-NNU"/>
                                         <constraint firstItem="tUM-Ue-rpp" firstAttribute="leading" secondItem="dxi-02-fsh" secondAttribute="trailing" constant="8" id="XUw-MZ-H0L"/>
                                         <constraint firstAttribute="trailing" secondItem="tUM-Ue-rpp" secondAttribute="trailing" constant="8" id="XWK-qk-y6X"/>
@@ -69,11 +67,6 @@
                                         <constraint firstItem="FSm-oO-XYa" firstAttribute="leading" secondItem="5DX-s1-Uhg" secondAttribute="leading" constant="8" id="gy2-i3-d32"/>
                                         <constraint firstItem="tUM-Ue-rpp" firstAttribute="top" secondItem="5DX-s1-Uhg" secondAttribute="top" constant="8" id="j2S-5H-i4G"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="Jtl-PJ-2L7"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="imageProfile" destination="dxi-02-fsh" id="aSF-Ca-z3W"/>
@@ -123,6 +116,9 @@
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mcr-21-7GF">
                                             <rect key="frame" x="8" y="95" width="584" height="78"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="78" id="Ydi-V2-m3K"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -148,6 +144,7 @@
                                         <mask key="constraints">
                                             <exclude reference="JjL-oe-IaL"/>
                                             <exclude reference="fWr-8v-hnJ"/>
+                                            <exclude reference="Fia-y2-jhE"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -307,7 +304,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Daz-hD-tbL" id="I7X-Yn-ORP">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8n-Fr-xvs">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8n-Fr-xvs">
                                             <rect key="frame" x="8" y="8" width="584" height="28"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
@@ -319,6 +316,11 @@
                                         <constraint firstAttribute="trailing" secondItem="b8n-Fr-xvs" secondAttribute="trailing" constant="8" id="fyg-oV-CaG"/>
                                         <constraint firstAttribute="bottom" secondItem="b8n-Fr-xvs" secondAttribute="bottom" constant="8" id="gGr-DM-wgh"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="gGr-DM-wgh"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="labelText" destination="b8n-Fr-xvs" id="v8V-wi-a0j"/>
