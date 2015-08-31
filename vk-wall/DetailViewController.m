@@ -14,6 +14,10 @@
 #import "ImageCell.h"
 #import <AFNetworking/UIKit+AFNetworking.h>
 
+static NSString *kTextCellIdentifier = @"TextCellIdentifier";
+static NSString *kImageCellIdentifier = @"ImageCellIdentifier";
+static CGFloat kPadding = 8.f;
+
 @interface DetailViewController ()
 
 @property (nonatomic, strong) NSMutableArray *items;
@@ -57,10 +61,7 @@
         
         Wall *wall = object;
         
-        static NSString *cellIdentifier = @"TextCellIdentifier";
-        
-        TextCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        
+        TextCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextCellIdentifier];
         cell.labelText.text = wall.text;
         
         return cell;
@@ -69,10 +70,7 @@
         
         Photo *photo = object;
         
-        static NSString *cellIdentifier = @"ImageCellIdentifier";
-        
-        ImageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        
+        ImageCell *cell = [tableView dequeueReusableCellWithIdentifier:kImageCellIdentifier];
         [cell.imagePhoto setImageWithURL:photo.url];
         
         return cell;
@@ -96,30 +94,10 @@
         
         Wall *wall = object;
         
-        UIFont* font = [UIFont systemFontOfSize:17.f];
+        TextCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextCellIdentifier];
+        cell.labelText.text = wall.text;
         
-        NSShadow* shadow = [[NSShadow alloc] init];
-        shadow.shadowOffset = CGSizeMake(0, -1);
-        shadow.shadowBlurRadius = 0.5;
-        
-        NSMutableParagraphStyle* paragraph = [[NSMutableParagraphStyle alloc] init];
-        [paragraph setLineBreakMode:NSLineBreakByWordWrapping];
-        [paragraph setAlignment:NSTextAlignmentLeft];
-        
-        NSDictionary* attributes =
-        [NSDictionary dictionaryWithObjectsAndKeys:
-         font, NSFontAttributeName,
-         paragraph, NSParagraphStyleAttributeName,
-         shadow, NSShadowAttributeName, nil];
-        
-        CGSize size = CGSizeMake(CGRectGetWidth(self.view.frame) - 8.f - 8.f, CGFLOAT_MAX);
-        
-        CGRect rect = [wall.text boundingRectWithSize:size
-                                         options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                      attributes:attributes
-                                         context:nil];
-        return rect.size.height + 8.f + 8.f;
-        
+        return cell.calculateHeight;
         
     } else {
         
@@ -131,7 +109,7 @@
             return frameWidth;
         }
         
-        return photo.height.floatValue + 8.f + 8.f;
+        return photo.height.floatValue + kPadding + kPadding;
         
     }
 

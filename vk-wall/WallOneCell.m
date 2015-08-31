@@ -10,6 +10,20 @@
 
 @implementation WallOneCell
 
+- (void)configureWith:(Wall *)wall {
+    [super configureWith:wall];
+    
+    Photo *photo = wall.photos[0];
+    [self.imageOne setImageWithURL:photo.url];
+}
+
+- (CGFloat)calculateHeight {
+    
+    CGFloat height = CGRectGetMaxY(self.imageOne.frame);
+    
+    return height + kPadding;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

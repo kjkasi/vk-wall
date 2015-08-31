@@ -73,26 +73,6 @@
     return ImageTypeNone;
 }
 
-- (NSString *)cellIdetifier {
-    
-    switch ([self type]) {
-        case ImageTypeNone:
-            return @"WallNoneCellIdentifier";
-            break;
-        case ImageTypeOne:
-            return @"WallOneCellIdentifier";
-            break;
-        case ImageTypeTwo:
-            return @"WallTwoCellIdentifier";
-            break;
-            
-        default:
-            break;
-    }
-    
-    return nil;
-}
-
 - (NSArray *)photosUrl {
     
     NSUInteger photoCount = self.photos.count;

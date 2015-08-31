@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class Wall;
+#import "Wall+Extended.h"
+#import "Profile+Extended.h"
+#import "Photo+Extended.h"
+#import <AFNetworking/UIKit+AFNetworking.h>
+
+static const CGFloat kPadding = 8.f;
 
 @interface WallCell : UITableViewCell
 
@@ -23,5 +28,9 @@
 @property (nonatomic, weak) IBOutlet UIImageView *imageOne;
 
 @property (nonatomic, weak) IBOutlet UIImageView *imageTwo;
+
+- (void)configureWith:(Wall *)wall;
+
+- (CGFloat)calculateHeight;
 
 @end

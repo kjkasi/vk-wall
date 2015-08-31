@@ -1,5 +1,5 @@
 //
-//  TextCell.h
+//  ActivityView.h
 //  vk-wall
 //
 //  Created by Anton Minin on 31/08/15.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TextCell : UITableViewCell
-
-@property (nonatomic, weak) IBOutlet UILabel *labelText;
-
-- (CGFloat)calculateHeight;
+@interface ActivityView : UIView
 
 @end

@@ -10,7 +10,9 @@
 
 #import "AFNetworkActivityIndicatorManager.h"
 
-NSString *const kBaseUrl = @"https://api.vk.com/method/";
+static NSString *kBaseUrl = @"https://api.vk.com/method/";
+
+static NSString *kAuchViewControllerIdentifier = @"AuchViewController";
 
 @interface ApiManager()
 
@@ -66,7 +68,7 @@ NSString *const kBaseUrl = @"https://api.vk.com/method/";
 - (void)authorize {
     
     UIStoryboard *newStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [newStoryboard instantiateViewControllerWithIdentifier:@"AuchViewController"];
+    UIViewController *vc = [newStoryboard instantiateViewControllerWithIdentifier:kAuchViewControllerIdentifier];
     
     [[self topViewController] presentViewController:vc animated:YES completion:nil];
 }

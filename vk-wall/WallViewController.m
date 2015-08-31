@@ -17,6 +17,17 @@
 #import <AFNetworking/UIKit+AFNetworking.h>
 #import "Photo+Extended.h"
 #import "DetailViewController.h"
+#import "ActivityView.h"
+
+static NSString *kAuchSigueIdentifier = @"AuchSigueIdentifier";
+
+static NSString *kDetailSegueIdentifier = @"DetailSegueIdentifier";
+
+static NSString *kWallNoneCellIdentifier = @"WallNoneCellIdentifier";
+
+static NSString *kWallOneCellIdentifier = @"WallOneCellIdentifier";
+
+static NSString *kWallTwoCellIdentifier = @"WallTwoCellIdentifier";
 
 @interface WallViewController() <NSFetchedResultsControllerDelegate>
 
@@ -25,6 +36,8 @@
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *buttonLogout;
+
+@property (nonatomic, assign, getter=isFirstAppear) BOOL firstAppear;
 
 @end
 
@@ -38,12 +51,17 @@
     UIRefreshControl* refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refreshWall) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
-    
-    [self loadDataWithOffset:0];
+    self.firstAppear = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if ([self isFirstAppear]) {
+        self.firstAppear = NO;
+        [self loadDataWithOffset:0];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,25 +73,27 @@
 
 - (void)loadDataWithOffset:(NSInteger)offset {
     
-    self.tableView.tableFooterView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.tableView.tableFooterView = [[ActivityView alloc] initWithFrame:CGRectMake(0.f, 0.f, CGRectGetWidth(self.view.bounds), 44.f)];
+    
+    __weak typeof(self) weakSelf = self;
     
     [[ApiManager sharedManager] getWallWithOffset:offset response:^(NSError *error) {
         
-        if ([self.refreshControl isRefreshing]) {
-            [self.refreshControl endRefreshing];
-        }
-        
-        self.tableView.tableFooterView = nil;
-        
-        if (error) {
-            [[[UIAlertView alloc] initWithTitle:error.domain message:error.description delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil] show];
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([weakSelf.refreshControl isRefreshing]) {
+                [weakSelf.refreshControl endRefreshing];
+            }
+            
+            weakSelf.tableView.tableFooterView = nil;
+            
+            if (error) {
+                [[[UIAlertView alloc] initWithTitle:error.domain message:error.description delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil] show];
+            }
+        });
     }];
 }
 
 - (void)refreshWall {
-    //[Wall MR_truncateAll];
-    //[Profile MR_truncateAll];
     [self loadDataWithOffset:0];
 }
 
@@ -87,69 +107,47 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    //NSLog(@"row count%@", @([sectionInfo numberOfObjects]));
     return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [self configureCellAtIndexPath:indexPath];
-    
-    return cell;
-}
-
-- (WallCell *)configureCellAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UITableView *tableView = self.tableView;
-    
     Wall *wall = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    WallCell *cell = [tableView dequeueReusableCellWithIdentifier:wall.cellIdetifier];
+    WallCell *cell = nil;
     
-    Profile *profile = wall.owner;
-    
-    cell.labelName.text = [NSString stringWithFormat:@"%@ %@", profile.firstName, profile.lastName];
-    cell.labelDate.text = wall.date.description;
-    cell.labelText.text = wall.text;
-    
-    [UIView transitionWithView:cell.imageProfile duration:0.1f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-        [cell.imageProfile setImageWithURL:[NSURL URLWithString:profile.photo50]];
-    } completion:nil];
-    
-    if (wall.type == ImageTypeOne) {
-        Photo *photo = wall.photos[0];
-        [cell.imageOne setImageWithURL:photo.url];
+    if (wall.type == ImageTypeNone) {
+        cell = [tableView dequeueReusableCellWithIdentifier:kWallNoneCellIdentifier];
+    } else if (wall.type == ImageTypeOne) {
+        cell = [tableView dequeueReusableCellWithIdentifier:kWallOneCellIdentifier];
     } else if (wall.type == ImageTypeTwo) {
-        Photo *photoOne = wall.photos[0];
-        [cell.imageOne setImageWithURL:photoOne.url];
-        Photo *photoTwo = wall.photos[1];
-        [cell.imageTwo  setImageWithURL:photoTwo.url];
+        cell = [tableView dequeueReusableCellWithIdentifier:kWallTwoCellIdentifier];
     }
+    
+    [cell configureWith:wall];
     
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewAutomaticDimension;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     Wall *wall = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    WallCell *cell = [self configureCellAtIndexPath:indexPath];
+    WallCell *cell = nil;
     
-    CGFloat height = CGRectGetMaxY(cell.labelText.frame);
-    
-    if (wall.type == ImageTypeOne) {
-        height += 78.f;
+    if (wall.type == ImageTypeNone) {
+        cell = [tableView dequeueReusableCellWithIdentifier:kWallNoneCellIdentifier];
+    } else if (wall.type == ImageTypeOne) {
+        cell = [tableView dequeueReusableCellWithIdentifier:kWallOneCellIdentifier];
     } else if (wall.type == ImageTypeTwo) {
-        height += 78.f + 8.f;
+        cell = [tableView dequeueReusableCellWithIdentifier:kWallTwoCellIdentifier];
     }
     
-    return height + 8.f;
+    [cell configureWith:wall];
+    
+    return cell.calculateHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -157,7 +155,7 @@
     
     Wall *wall = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    [self performSegueWithIdentifier:@"DetailSegueIdentifier" sender:wall];
+    [self performSegueWithIdentifier:kDetailSegueIdentifier sender:wall];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -269,14 +267,14 @@
     AccessToken *token = [[AccessToken alloc] init];
     [token clean];
     
-    [self performSegueWithIdentifier:@"AuchSigueIdentifier" sender:nil];
+    [self performSegueWithIdentifier:kAuchSigueIdentifier sender:nil];
 }
 
 #pragma mark - 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([segue.identifier isEqualToString:@"DetailSegueIdentifier"]) {
+    if ([segue.identifier isEqualToString:kDetailSegueIdentifier]) {
         DetailViewController *vc = segue.destinationViewController;
         vc.wall = sender;
     }

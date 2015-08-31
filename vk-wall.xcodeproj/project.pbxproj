@@ -14,6 +14,8 @@
 		E15054CB1B93C8E70059DAA9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15054CA1B93C8E70059DAA9 /* DetailViewController.m */; };
 		E15054CE1B93CD3A0059DAA9 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15054CD1B93CD3A0059DAA9 /* TextCell.m */; };
 		E15054D11B93CD4B0059DAA9 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15054D01B93CD4B0059DAA9 /* ImageCell.m */; };
+		E169E12A1B9461C500AB1AC6 /* NSDictionary+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = E169E1291B9461C500AB1AC6 /* NSDictionary+Extended.m */; };
+		E169E12D1B94667300AB1AC6 /* ActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = E169E12C1B94667300AB1AC6 /* ActivityView.m */; };
 		E173D4D71B8DE4BD00A6AC6E /* ApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E173D4D61B8DE4BD00A6AC6E /* ApiManager.m */; };
 		E173D4DA1B8DE7BE00A6AC6E /* AuchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E173D4D91B8DE7BE00A6AC6E /* AuchViewController.m */; };
 		E173D4E11B8DF73100A6AC6E /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = E173D4E01B8DF73100A6AC6E /* AccessToken.m */; };
@@ -63,6 +65,10 @@
 		E15054CD1B93CD3A0059DAA9 /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
 		E15054CF1B93CD4B0059DAA9 /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
 		E15054D01B93CD4B0059DAA9 /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
+		E169E1281B9461C500AB1AC6 /* NSDictionary+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extended.h"; sourceTree = "<group>"; };
+		E169E1291B9461C500AB1AC6 /* NSDictionary+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extended.m"; sourceTree = "<group>"; };
+		E169E12B1B94667300AB1AC6 /* ActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityView.h; sourceTree = "<group>"; };
+		E169E12C1B94667300AB1AC6 /* ActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityView.m; sourceTree = "<group>"; };
 		E173D4D51B8DE4BD00A6AC6E /* ApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiManager.h; sourceTree = "<group>"; };
 		E173D4D61B8DE4BD00A6AC6E /* ApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiManager.m; sourceTree = "<group>"; };
 		E173D4D81B8DE7BE00A6AC6E /* AuchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuchViewController.h; sourceTree = "<group>"; };
@@ -152,6 +158,8 @@
 				E1857F851B8E2A020018AE7A /* ApiManager+Wall.m */,
 				E173D4DF1B8DF73100A6AC6E /* AccessToken.h */,
 				E173D4E01B8DF73100A6AC6E /* AccessToken.m */,
+				E169E1281B9461C500AB1AC6 /* NSDictionary+Extended.h */,
+				E169E1291B9461C500AB1AC6 /* NSDictionary+Extended.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -162,6 +170,8 @@
 				E18463891B8F4B530080DF06 /* UITableViewCell */,
 				E17A08321B934AC100D7F40C /* PhotoView.h */,
 				E17A08331B934AC100D7F40C /* PhotoView.m */,
+				E169E12B1B94667300AB1AC6 /* ActivityView.h */,
+				E169E12C1B94667300AB1AC6 /* ActivityView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -433,6 +443,7 @@
 			files = (
 				E173D4D71B8DE4BD00A6AC6E /* ApiManager.m in Sources */,
 				E18792CC1B92681D001D0D19 /* Photo+Extended.m in Sources */,
+				E169E12A1B9461C500AB1AC6 /* NSDictionary+Extended.m in Sources */,
 				E1857F831B8E269D0018AE7A /* WallViewController.m in Sources */,
 				E17A08311B93400C00D7F40C /* Photo.m in Sources */,
 				E1857F9C1B8E575A0018AE7A /* Wall+Extended.m in Sources */,
@@ -447,6 +458,7 @@
 				E15054D11B93CD4B0059DAA9 /* ImageCell.m in Sources */,
 				E15054C81B93ABF30059DAA9 /* WallTwoCell.m in Sources */,
 				E17A082B1B93400C00D7F40C /* Profile.m in Sources */,
+				E169E12D1B94667300AB1AC6 /* ActivityView.m in Sources */,
 				E17A08341B934AC100D7F40C /* PhotoView.m in Sources */,
 				E15054CB1B93C8E70059DAA9 /* DetailViewController.m in Sources */,
 				E18792C61B9267FC001D0D19 /* Profile+Extended.m in Sources */,

@@ -10,6 +10,14 @@
 
 @implementation WallNoneCell
 
+- (CGFloat)calculateHeight {
+    
+    CGFloat height = CGRectGetMaxY(self.labelText.frame);
+    
+    return height + kPadding;
+    
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

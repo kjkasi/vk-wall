@@ -18,18 +18,6 @@
 
 @property (nonatomic, assign, getter=isLoggedIn) BOOL loggedIn;
 
-/*+ (NSString *)token;
-
-+ (void)setToken:(NSString *)token;
-
-+ (NSTimeInterval)expirationInterval;
-
-+ (void)setExpirationInterval:(NSTimeInterval)Interval;
-
-+ (NSString *)userId;
-
-+ (void)setUserId:(NSString *)userId;*/
-
 - (instancetype)initWithURL:(NSURL *)url;
 
 - (void)clean;

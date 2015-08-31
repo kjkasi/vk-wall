@@ -24,9 +24,6 @@ typedef NS_ENUM(NSUInteger, ImageType) {
 
 - (ImageType)type;
 
-//переделать
-- (NSString *)cellIdetifier;
-
 - (NSArray *)photosUrl;
 
 @end
