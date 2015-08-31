@@ -71,8 +71,10 @@
                         
                         NSDictionary *dictPhoto = attachment[@"photo"];
                         
-                        Photo *photo = [Photo initWithResponse:dictPhoto inContext:localContext];
-                        [wall addPhotosObject:photo];
+                        if (dictPhoto) {
+                            Photo *photo = [Photo initWithResponse:dictPhoto inContext:localContext];
+                            [wall addPhotosObject:photo];
+                        }
                         
                     }
                     

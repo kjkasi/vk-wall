@@ -16,8 +16,7 @@
 #import "WallCell.h"
 #import <AFNetworking/UIKit+AFNetworking.h>
 #import "Photo+Extended.h"
-
-static NSString *cellIdentifier = @"WallCellIdentifier";
+#import "DetailViewController.h"
 
 @interface WallViewController() <NSFetchedResultsControllerDelegate>
 
@@ -94,9 +93,18 @@ static NSString *cellIdentifier = @"WallCellIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    WallCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    UITableViewCell *cell = [self configureCellAtIndexPath:indexPath];
+    
+    return cell;
+}
+
+- (WallCell *)configureCellAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableView *tableView = self.tableView;
     
     Wall *wall = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    WallCell *cell = [tableView dequeueReusableCellWithIdentifier:wall.cellIdetifier];
     
     Profile *profile = wall.owner;
     
@@ -108,42 +116,48 @@ static NSString *cellIdentifier = @"WallCellIdentifier";
         [cell.imageProfile setImageWithURL:[NSURL URLWithString:profile.photo50]];
     } completion:nil];
     
-    [wall.photos enumerateObjectsUsingBlock:^(Photo *photo, NSUInteger idx, BOOL *stop) {
-        
-        if (idx > 1) {
-            return;
-        }
-        
-        //UIImageView *imageView = cell.imageViews[idx];
-        //[imageView setImageWithURL:photo.url];
-    }];
-
+    if (wall.type == ImageTypeOne) {
+        Photo *photo = wall.photos[0];
+        [cell.imageOne setImageWithURL:photo.url];
+    } else if (wall.type == ImageTypeTwo) {
+        Photo *photoOne = wall.photos[0];
+        [cell.imageOne setImageWithURL:photoOne.url];
+        Photo *photoTwo = wall.photos[1];
+        [cell.imageTwo  setImageWithURL:photoTwo.url];
+    }
     
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     Wall *wall = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    WallCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    WallCell *cell = [self configureCellAtIndexPath:indexPath];
     
-    if (wall.photos.count) {
-        NSNumber *height1 = [[wall.photos objectAtIndex:0] height];
-        //NSNumber *height2 = [[wall.photos objectAtIndex:1] height];
-        
-        CGFloat height0 = CGRectGetMaxY(cell.labelText.frame);
-        
-        return height0 + height1.integerValue;
-        
-    } else {
-        //CGFloat height = CGRectGetMaxY(cell.labelText.frame);
-        //return height;
+    CGFloat height = CGRectGetMaxY(cell.labelText.frame);
+    
+    if (wall.type == ImageTypeOne) {
+        height += 78.f;
+    } else if (wall.type == ImageTypeTwo) {
+        height += 78.f + 8.f;
     }
     
-    return 44.f;
+    return height + 8.f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    Wall *wall = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    [self performSegueWithIdentifier:@"DetailSegueIdentifier" sender:wall];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -256,6 +270,17 @@ static NSString *cellIdentifier = @"WallCellIdentifier";
     [token clean];
     
     [self performSegueWithIdentifier:@"AuchSigueIdentifier" sender:nil];
+}
+
+#pragma mark - 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"DetailSegueIdentifier"]) {
+        DetailViewController *vc = segue.destinationViewController;
+        vc.wall = sender;
+    }
+    
 }
 
 @end

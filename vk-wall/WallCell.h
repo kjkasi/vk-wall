@@ -20,4 +20,8 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *labelText;
 
+@property (nonatomic, weak) IBOutlet UIImageView *imageOne;
+
+@property (nonatomic, weak) IBOutlet UIImageView *imageTwo;
+
 @end

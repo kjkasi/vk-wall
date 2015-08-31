@@ -8,6 +8,12 @@
 
 #import "Wall.h"
 
+typedef NS_ENUM(NSUInteger, ImageType) {
+    ImageTypeNone,
+    ImageTypeOne,
+    ImageTypeTwo,
+};
+
 @interface Wall (Extended)
 
 - (NSString *)dateString;
@@ -16,8 +22,11 @@
 
 + (instancetype)initWithResponse:(id)response inContext:(NSManagedObjectContext *)context;
 
-//- (void)addPhotosObject:(Photo *)value;
+- (ImageType)type;
 
-//- (CGFloat)heightAll;
+//переделать
+- (NSString *)cellIdetifier;
+
+- (NSArray *)photosUrl;
 
 @end

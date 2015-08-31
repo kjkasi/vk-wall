@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		C43B59C669F76EB17DCE1E91 /* libPods-vk-wall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 946D8A632FC1C5FCF24DEACA /* libPods-vk-wall.a */; };
+		E15054C21B93AB1E0059DAA9 /* WallNoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15054C11B93AB1E0059DAA9 /* WallNoneCell.m */; };
+		E15054C51B93ABE50059DAA9 /* WallOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15054C41B93ABE50059DAA9 /* WallOneCell.m */; };
+		E15054C81B93ABF30059DAA9 /* WallTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15054C71B93ABF30059DAA9 /* WallTwoCell.m */; };
+		E15054CB1B93C8E70059DAA9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15054CA1B93C8E70059DAA9 /* DetailViewController.m */; };
+		E15054CE1B93CD3A0059DAA9 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15054CD1B93CD3A0059DAA9 /* TextCell.m */; };
+		E15054D11B93CD4B0059DAA9 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15054D01B93CD4B0059DAA9 /* ImageCell.m */; };
 		E173D4D71B8DE4BD00A6AC6E /* ApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E173D4D61B8DE4BD00A6AC6E /* ApiManager.m */; };
 		E173D4DA1B8DE7BE00A6AC6E /* AuchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E173D4D91B8DE7BE00A6AC6E /* AuchViewController.m */; };
 		E173D4E11B8DF73100A6AC6E /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = E173D4E01B8DF73100A6AC6E /* AccessToken.m */; };
@@ -45,6 +51,18 @@
 		624171BEAB9F7EDF3CAD74E2 /* Pods-vk-wall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vk-wall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vk-wall/Pods-vk-wall.debug.xcconfig"; sourceTree = "<group>"; };
 		85B04A1C4E4BE46B5ABE6657 /* Pods-vk-wall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vk-wall.release.xcconfig"; path = "Pods/Target Support Files/Pods-vk-wall/Pods-vk-wall.release.xcconfig"; sourceTree = "<group>"; };
 		946D8A632FC1C5FCF24DEACA /* libPods-vk-wall.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-vk-wall.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E15054C01B93AB1E0059DAA9 /* WallNoneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallNoneCell.h; sourceTree = "<group>"; };
+		E15054C11B93AB1E0059DAA9 /* WallNoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallNoneCell.m; sourceTree = "<group>"; };
+		E15054C31B93ABE50059DAA9 /* WallOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallOneCell.h; sourceTree = "<group>"; };
+		E15054C41B93ABE50059DAA9 /* WallOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallOneCell.m; sourceTree = "<group>"; };
+		E15054C61B93ABF30059DAA9 /* WallTwoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallTwoCell.h; sourceTree = "<group>"; };
+		E15054C71B93ABF30059DAA9 /* WallTwoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallTwoCell.m; sourceTree = "<group>"; };
+		E15054C91B93C8E70059DAA9 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		E15054CA1B93C8E70059DAA9 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		E15054CC1B93CD3A0059DAA9 /* TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCell.h; sourceTree = "<group>"; };
+		E15054CD1B93CD3A0059DAA9 /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
+		E15054CF1B93CD4B0059DAA9 /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
+		E15054D01B93CD4B0059DAA9 /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
 		E173D4D51B8DE4BD00A6AC6E /* ApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiManager.h; sourceTree = "<group>"; };
 		E173D4D61B8DE4BD00A6AC6E /* ApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiManager.m; sourceTree = "<group>"; };
 		E173D4D81B8DE7BE00A6AC6E /* AuchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuchViewController.h; sourceTree = "<group>"; };
@@ -155,6 +173,8 @@
 				E173D4D91B8DE7BE00A6AC6E /* AuchViewController.m */,
 				E1857F811B8E269D0018AE7A /* WallViewController.h */,
 				E1857F821B8E269D0018AE7A /* WallViewController.m */,
+				E15054C91B93C8E70059DAA9 /* DetailViewController.h */,
+				E15054CA1B93C8E70059DAA9 /* DetailViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -234,6 +254,16 @@
 			children = (
 				E184638A1B8F4B7E0080DF06 /* WallCell.h */,
 				E184638B1B8F4B7E0080DF06 /* WallCell.m */,
+				E15054C01B93AB1E0059DAA9 /* WallNoneCell.h */,
+				E15054C11B93AB1E0059DAA9 /* WallNoneCell.m */,
+				E15054C31B93ABE50059DAA9 /* WallOneCell.h */,
+				E15054C41B93ABE50059DAA9 /* WallOneCell.m */,
+				E15054C61B93ABF30059DAA9 /* WallTwoCell.h */,
+				E15054C71B93ABF30059DAA9 /* WallTwoCell.m */,
+				E15054CC1B93CD3A0059DAA9 /* TextCell.h */,
+				E15054CD1B93CD3A0059DAA9 /* TextCell.m */,
+				E15054CF1B93CD4B0059DAA9 /* ImageCell.h */,
+				E15054D01B93CD4B0059DAA9 /* ImageCell.m */,
 			);
 			name = UITableViewCell;
 			sourceTree = "<group>";
@@ -407,12 +437,18 @@
 				E17A08311B93400C00D7F40C /* Photo.m in Sources */,
 				E1857F9C1B8E575A0018AE7A /* Wall+Extended.m in Sources */,
 				E176167F1B8DD73F004DD149 /* AppDelegate.m in Sources */,
+				E15054C51B93ABE50059DAA9 /* WallOneCell.m in Sources */,
+				E15054C21B93AB1E0059DAA9 /* WallNoneCell.m in Sources */,
 				E17A082E1B93400C00D7F40C /* Wall.m in Sources */,
+				E15054CE1B93CD3A0059DAA9 /* TextCell.m in Sources */,
 				E1857F861B8E2A020018AE7A /* ApiManager+Wall.m in Sources */,
 				E1857F8A1B8E44ED0018AE7A /* Model.xcdatamodeld in Sources */,
 				E173D4E11B8DF73100A6AC6E /* AccessToken.m in Sources */,
+				E15054D11B93CD4B0059DAA9 /* ImageCell.m in Sources */,
+				E15054C81B93ABF30059DAA9 /* WallTwoCell.m in Sources */,
 				E17A082B1B93400C00D7F40C /* Profile.m in Sources */,
 				E17A08341B934AC100D7F40C /* PhotoView.m in Sources */,
+				E15054CB1B93C8E70059DAA9 /* DetailViewController.m in Sources */,
 				E18792C61B9267FC001D0D19 /* Profile+Extended.m in Sources */,
 				E184638C1B8F4B7E0080DF06 /* WallCell.m in Sources */,
 				E176167C1B8DD73F004DD149 /* main.m in Sources */,
@@ -545,7 +581,9 @@
 			baseConfigurationReference = 624171BEAB9F7EDF3CAD74E2 /* Pods-vk-wall.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "vk-wall/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -556,7 +594,9 @@
 			baseConfigurationReference = 85B04A1C4E4BE46B5ABE6657 /* Pods-vk-wall.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "vk-wall/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

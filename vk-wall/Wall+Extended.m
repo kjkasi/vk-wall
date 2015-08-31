@@ -60,4 +60,50 @@
     self.photos = photos;
 }
 
+- (ImageType)type {
+    
+    NSUInteger photoCount = self.photos.count;
+    
+    if (photoCount == 1) {
+        return ImageTypeOne;
+    } else if (photoCount > 1) {
+        return ImageTypeTwo;
+    }
+    
+    return ImageTypeNone;
+}
+
+- (NSString *)cellIdetifier {
+    
+    switch ([self type]) {
+        case ImageTypeNone:
+            return @"WallNoneCellIdentifier";
+            break;
+        case ImageTypeOne:
+            return @"WallOneCellIdentifier";
+            break;
+        case ImageTypeTwo:
+            return @"WallTwoCellIdentifier";
+            break;
+            
+        default:
+            break;
+    }
+    
+    return nil;
+}
+
+- (NSArray *)photosUrl {
+    
+    NSUInteger photoCount = self.photos.count;
+    
+    if (photoCount == 1) {
+        return @[self.photos[0]];
+    } else if (photoCount > 1) {
+        return @[self.photos[0], self.photos[1]];
+    }
+    
+    return @[];
+}
+
 @end
