@@ -52,6 +52,12 @@ static NSString *kWallTwoCellIdentifier = @"WallTwoCellIdentifier";
     [refreshControl addTarget:self action:@selector(refreshWall) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
     self.firstAppear = YES;
+    
+    __weak typeof(self) weakSekf = self;
+    
+    [[ApiManager sharedManager] handleLogin:^{
+        [weakSekf performSegueWithIdentifier:kAuchSigueIdentifier sender:nil];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -61,7 +67,6 @@ static NSString *kWallTwoCellIdentifier = @"WallTwoCellIdentifier";
         self.firstAppear = NO;
         [self loadDataWithOffset:0];
     }
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,7 +89,9 @@ static NSString *kWallTwoCellIdentifier = @"WallTwoCellIdentifier";
                 [weakSelf.refreshControl endRefreshing];
             }
             
-            weakSelf.tableView.tableFooterView = nil;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                weakSelf.tableView.tableFooterView = nil;
+            });
             
             if (error) {
                 [[[UIAlertView alloc] initWithTitle:error.domain message:error.description delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil] show];
@@ -216,11 +223,11 @@ static NSString *kWallTwoCellIdentifier = @"WallTwoCellIdentifier";
 {
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
         default:
             break;
@@ -235,20 +242,20 @@ static NSString *kWallTwoCellIdentifier = @"WallTwoCellIdentifier";
     
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [tableView.delegate tableView:tableView willDisplayCell:[tableView cellForRowAtIndexPath:indexPath] forRowAtIndexPath:indexPath];
+            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
@@ -277,6 +284,8 @@ static NSString *kWallTwoCellIdentifier = @"WallTwoCellIdentifier";
     if ([segue.identifier isEqualToString:kDetailSegueIdentifier]) {
         DetailViewController *vc = segue.destinationViewController;
         vc.wall = sender;
+    } else if ([segue.identifier isEqualToString:kAuchSigueIdentifier]) {
+        self.firstAppear = YES;
     }
     
 }

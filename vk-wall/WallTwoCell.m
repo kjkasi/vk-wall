@@ -14,9 +14,9 @@
     [super configureWith:wall];
     
     Photo *photoOne = wall.photos[0];
-    [self.imageOne setImageWithURL:photoOne.url];
+    [self.imageOne setCacheImageWithURL:photoOne.url];
     Photo *photoTwo = wall.photos[1];
-    [self.imageTwo  setImageWithURL:photoTwo.url];
+    [self.imageTwo  setCacheImageWithURL:photoTwo.url];
 }
 
 - (CGFloat)calculateHeight {

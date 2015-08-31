@@ -11,6 +11,8 @@
 #import <AFNetworking/AFNetworking.h>
 #import "AccessToken.h"
 
+typedef void (^ApiHandleLogin)(void);
+
 static const NSInteger kItemCount = 10;
 
 @interface ApiManager : NSObject
@@ -19,10 +21,12 @@ static const NSInteger kItemCount = 10;
 
 @property (nonatomic, strong) AccessToken *token;
 
-@property (nonatomic, assign, getter=isLoggedIn) BOOL loggedIn; 
+@property (nonatomic, assign, getter=isLoggedIn) BOOL loggedIn;
+
+@property (nonatomic, copy) ApiHandleLogin handleLogin;
 
 + (instancetype)sharedManager;
 
-- (void)authorize;
+- (void)handleLogin:(ApiHandleLogin)handle;
 
 @end

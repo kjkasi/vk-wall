@@ -65,41 +65,16 @@ static NSString *kAuchViewControllerIdentifier = @"AuchViewController";
 
 #pragma mark - topViewController
 
-- (void)authorize {
-    
-    UIStoryboard *newStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [newStoryboard instantiateViewControllerWithIdentifier:kAuchViewControllerIdentifier];
-    
-    [[self topViewController] presentViewController:vc animated:YES completion:nil];
-}
-
-- (UIViewController *)topViewController
-{
-    return [self topViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
-}
-
-- (UIViewController *)topViewController:(UIViewController *)rootViewController
-{
-    if (rootViewController.presentedViewController == nil) {
-        return rootViewController;
-    }
-    
-    if ([rootViewController.presentedViewController isMemberOfClass:[UINavigationController class]]) {
-        UINavigationController *navigationController = (UINavigationController *)rootViewController.presentedViewController;
-        UIViewController *lastViewController = [[navigationController viewControllers] lastObject];
-        return [self topViewController:lastViewController];
-    }
-    
-    UIViewController *presentedViewController = (UIViewController *)rootViewController.presentedViewController;
-    return [self topViewController:presentedViewController];
-}
-
 - (AccessToken *)token {
     if (_token == nil) {
         AccessToken *token = [[AccessToken alloc] init];
         _token = token;
     }
     return _token;
+}
+
+- (void)handleLogin:(ApiHandleLogin)handle {
+    self.handleLogin = handle;
 }
 
 @end

@@ -29,7 +29,7 @@
     self.labelText.text = wall.text;
     
     [UIView transitionWithView:self.imageProfile duration:0.1f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-        [self.imageProfile setImageWithURL:[NSURL URLWithString:profile.photo50]];
+        [self.imageProfile setCacheImageWithURL:[NSURL URLWithString:profile.photo50]];
     } completion:nil];
     
 }

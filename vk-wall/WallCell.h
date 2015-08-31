@@ -11,7 +11,7 @@
 #import "Wall+Extended.h"
 #import "Profile+Extended.h"
 #import "Photo+Extended.h"
-#import <AFNetworking/UIKit+AFNetworking.h>
+#import "UIImageView+Extended.h"
 
 static const CGFloat kPadding = 8.f;
 

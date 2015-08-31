@@ -46,7 +46,10 @@ static NSString *kPhoto = @"photo";
     
     if (![self.token isLoggedIn]) {
         response(nil);
-        [self authorize];
+        if (self.handleLogin) {
+            self.handleLogin();
+        }
+        
         return;
     }
     
@@ -63,7 +66,9 @@ static NSString *kPhoto = @"photo";
             if ([errorCode isEqualToNumber:@5]) {
                 response(nil);
                 [self.token clean];
-                [self authorize];
+                if (self.handleLogin) {
+                    self.handleLogin();
+                }
             }
         }
         

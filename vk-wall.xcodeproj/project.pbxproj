@@ -16,6 +16,7 @@
 		E15054D11B93CD4B0059DAA9 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15054D01B93CD4B0059DAA9 /* ImageCell.m */; };
 		E169E12A1B9461C500AB1AC6 /* NSDictionary+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = E169E1291B9461C500AB1AC6 /* NSDictionary+Extended.m */; };
 		E169E12D1B94667300AB1AC6 /* ActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = E169E12C1B94667300AB1AC6 /* ActivityView.m */; };
+		E169E1331B947D3E00AB1AC6 /* UIImageView+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = E169E1321B947D3E00AB1AC6 /* UIImageView+Extended.m */; };
 		E173D4D71B8DE4BD00A6AC6E /* ApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E173D4D61B8DE4BD00A6AC6E /* ApiManager.m */; };
 		E173D4DA1B8DE7BE00A6AC6E /* AuchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E173D4D91B8DE7BE00A6AC6E /* AuchViewController.m */; };
 		E173D4E11B8DF73100A6AC6E /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = E173D4E01B8DF73100A6AC6E /* AccessToken.m */; };
@@ -69,6 +70,8 @@
 		E169E1291B9461C500AB1AC6 /* NSDictionary+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extended.m"; sourceTree = "<group>"; };
 		E169E12B1B94667300AB1AC6 /* ActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityView.h; sourceTree = "<group>"; };
 		E169E12C1B94667300AB1AC6 /* ActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityView.m; sourceTree = "<group>"; };
+		E169E1311B947D3E00AB1AC6 /* UIImageView+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Extended.h"; sourceTree = "<group>"; };
+		E169E1321B947D3E00AB1AC6 /* UIImageView+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Extended.m"; sourceTree = "<group>"; };
 		E173D4D51B8DE4BD00A6AC6E /* ApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiManager.h; sourceTree = "<group>"; };
 		E173D4D61B8DE4BD00A6AC6E /* ApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiManager.m; sourceTree = "<group>"; };
 		E173D4D81B8DE7BE00A6AC6E /* AuchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuchViewController.h; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 				E173D4E01B8DF73100A6AC6E /* AccessToken.m */,
 				E169E1281B9461C500AB1AC6 /* NSDictionary+Extended.h */,
 				E169E1291B9461C500AB1AC6 /* NSDictionary+Extended.m */,
+				E169E1311B947D3E00AB1AC6 /* UIImageView+Extended.h */,
+				E169E1321B947D3E00AB1AC6 /* UIImageView+Extended.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -455,6 +460,7 @@
 				E1857F861B8E2A020018AE7A /* ApiManager+Wall.m in Sources */,
 				E1857F8A1B8E44ED0018AE7A /* Model.xcdatamodeld in Sources */,
 				E173D4E11B8DF73100A6AC6E /* AccessToken.m in Sources */,
+				E169E1331B947D3E00AB1AC6 /* UIImageView+Extended.m in Sources */,
 				E15054D11B93CD4B0059DAA9 /* ImageCell.m in Sources */,
 				E15054C81B93ABF30059DAA9 /* WallTwoCell.m in Sources */,
 				E17A082B1B93400C00D7F40C /* Profile.m in Sources */,
