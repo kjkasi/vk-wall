@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  WallViewController.h
 //  vk-wall
 //
 //  Created by Anton Minin on 26/08/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface WallViewController : UITableViewController
 
 @end
-
