@@ -82,14 +82,14 @@ static NSString *kPhoto = @"photo";
                 [Wall MR_truncateAllInContext:localContext];
             }
             
-            // MARK:Parse profiles
+            //MARK: Parse profiles
             for (id object in profiles) {
                 
                 [Profile initWithResponse:object inContext:localContext];
                 
             }
             
-            // MARK:Parse wall
+            //MARK: Parse wall
             for (id object in wall) {
                 if ([object isKindOfClass:[NSDictionary class]]) {
                     
@@ -106,9 +106,7 @@ static NSString *kPhoto = @"photo";
                             Photo *photo = [Photo initWithResponse:dictPhoto inContext:localContext];
                             [wall addPhotosObject:photo];
                         }
-                        
                     }
-                    
                 }
             }
             
